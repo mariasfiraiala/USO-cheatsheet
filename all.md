@@ -306,3 +306,109 @@
         ```console
         $ systemctl | grep daemon
         ```
+
+## Internet
+
+* Show IPs for all network interfaces:
+
+    ```console
+    $ ip a s
+    ```
+
+* Show gateway IP:
+
+    ```console
+    $ ip r s
+    ```
+
+* Show newtork interfaces info:
+
+    ```console
+    $ ip link show
+    ```
+
+* Set-up network interface:
+
+    ```console
+    $ ip link set up dev <interface_name>
+    ```
+
+* Dynamically set IP on network interface:
+
+    ```console
+    $ dhclient <interface_name>
+    ```
+
+* Delete network interface IP:
+
+    ```console
+    $ ip address glush <interface_name>
+    ```
+
+* Send ICMP packets:
+
+    ```console
+    $ ping -c <no_packets> -i <interval> <address>
+    ```
+
+* Get all hops until destination:
+
+    ```console
+    $ traceroute <address>
+    ```
+
+* DNS look-up:
+
+    ```console
+    $ host <address>
+    ```
+
+* Get owner of IP:
+
+    ```console
+    $ whois <address>
+    ```
+
+* Show configured ports:
+
+    ```console
+    $ cat /etc/services
+    ```
+
+* `ssh`
+
+    * connect to remote system:
+
+    ```console
+    $ ssh <user>@<address>
+    ```
+
+    * generate keys for passwordless connection:
+
+    ```console
+    $ ssh-keygen
+    ```
+
+    * copy keys for passwordless connection:
+
+    ```console
+    $ ssh-copy-id <user>@<address>
+    ```
+
+    * give remote command:
+
+    ```console
+    $ ssh <user>@<address> <command>
+    ```
+
+    * remote uploading:
+
+    ```console
+    $ scp <local_file> <user>@<address>:<remote_dir>
+    ```
+
+    * remote downloading:
+
+    ```console
+    $ scp <user>@<address>:<remote_file> <local_dir>
+    ```

@@ -510,3 +510,49 @@
     $ touch $(seq -f "test-%02g.txt" 1 3)
     $ mkdir $(seq -f "uso-curs-%02g" 0 12)
     ```
+
+## Shell scripting
+
+* Script arguments:
+
+    * `$#` = number of arguments
+
+    * `$@` = all arguments, separated by space
+
+    * `$1`, `$2`, `$3` = first, second, third argument
+
+    * `$0` = name of the script
+
+* `while read`:
+
+    ```bash
+    IFS=','
+    while read name group final_grade test_grade practical_grade; do
+        echo "$name"
+    done < students.csv
+    ```
+
+    * `IFS` = separator
+
+* `if`:
+
+    ```bash
+    IFS=','
+    while read name group final_grade test_grade practical_grade; do
+        if test "$final_grade" -gt 5; then
+            echo "$name,$group,$final_grade"
+        fi
+    done < students.csv
+    ```
+
+* `for`:
+
+    ```bash
+    for file in $1 # iterate through a directory received as a parameter
+    do
+        if test -f $file; then
+            stat --print="%a %F %n\n" $file
+            cp $file $file.bkp
+        fi
+    done
+    ```

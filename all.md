@@ -412,3 +412,101 @@
     ```console
     $ scp <user>@<address>:<remote_file> <local_dir>
     ```
+
+## Oneliners
+
+* `grep` (search inside files)
+
+    * find lines that contain the pattern and number them:
+    
+    ```console
+    $ grep -n <pattern> <file>
+    ```
+
+    * find lines that contain the pattern case insensitive:
+    
+    ```console
+    $ grep -i <pattern> <file>
+    ```
+
+    * find lines that **do not** contain the pattern:
+    
+    ```console
+    $ grep -v <pattern> <file>
+    ```
+
+    * search for the pattern recursively in a dir:
+
+    ```console
+    $ grep -r
+    ```
+
+* `tr` and `sed` (replace patterns)
+
+    * `tr` replaces character by character from stdin:
+
+    ```console
+    $ tr <word> <word>
+    ```
+
+    * `sed` replaces strings irrespective of the legths of the words:
+
+    ```console
+    $ sed "s/<string1>/<string2>/g" <file>
+    ```
+
+* `cut` and `awk` (filter columns)
+
+    * `cut` filters columns - less powerfull than `awk`:
+
+    ```console
+    $ cut -d'<delimitators>' -f<col1,col2> # filters text after delimitators and keeps columns col1 and col2
+    ```
+
+    ```console
+    $ cut -c1-3 # keeps the first 3 characters from each line
+    ```
+
+    * `awk` filters columns - more powerfull than `cut`:
+
+    ```console
+    $ awk -F'<delimitators>' '{print $1,$2,$3}' # filters text after delimitators and keeps columns 1, 2, 3
+    ```
+
+    ```console
+    $ awk -F'<delimitators>' '{print $NF}' # prints the last column
+    ```
+
+* `sort` and `uniq` (sort and remove duplicates - usually used together)
+
+    * `sort` sorts input/file alphabetically, in ascending order, after columns
+
+    ```console
+    $ sort -t<delimitator> <file> # sorts columns based on delimitator
+    ```
+
+    ```console
+    $ sort -k<columns> <file> # sorts after the indicated columns
+    # if we'd like to sort only after one column, we should have -k<col,col>
+    # -k<col> sorts file starting with column col!!!
+    ```
+
+    ```console
+    $ sort -n <file> # sorts numerically
+    ```
+
+    ```console
+    $ sort -r <file> # sorts in descending order
+    ```
+
+    * `uniq` removes duplicates
+
+* Examples:
+
+    ```console
+    $ for i in *.c; do mv "$i" "${i%.c}_uso.c"; done
+    $ for i in $(seq -f "%02g" 1 3); do touch test-"$i".txt; done
+    $ for i in $(seq -f "%02g" 0 12); do mkdir uso-curs-"$i"; done
+    $ touch $(seq -f "test-%02g.txt" 1 3)
+    $ mkdir $(seq -f "uso-curs-%02g" 0 12)
+    ```

@@ -724,3 +724,39 @@
     $ adduser --home <home_dir> <username> # home_dir must already exist
     $ adduser <username1> <username2> # adds username1 to username2's group
     ```
+
+## Security
+
+* Encoding (presents the information in other format)
+
+    * `base64`:
+
+    ```console
+    $ base64 <file> # encodes
+    $ base64 -d <file> # decodes
+    ```
+
+* Encryption (prevents MITM by hiding the data)
+
+    * `openssl`:
+
+    ```console
+    $  openssl aes-256-cbc -in <plain_text_file> -out <encrypted_file> [-pass pass:"parola"] # encrypts
+    $ openssl aes-256-cbc -d -in <encrypted_file> -out <plain_text_file> [-pass pass:"parola"] # decrypts
+    ```
+
+* Hashing (one-way function, used for passwords and verifying data integrity)
+
+    * `md5sum`:
+
+    ```console
+    $ md5sum <file>
+    ```
+
+* Misc
+
+    * Hashes dictionary: [CrackStation](https://crackstation.net/)
+
+    * password generator: `pwgen`
+
+    * manual password generator: `cat /dev/urandom | tr -dc 'A-Za-z0-9' | head -c 10`

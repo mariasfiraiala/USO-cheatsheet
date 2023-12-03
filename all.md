@@ -556,3 +556,63 @@
         fi
     done
     ```
+
+## Inspecting the Hardware
+
+* `uname` - all sorts of system info:
+
+    ```console
+    $ uname --help
+    Print certain system information.  With no OPTION, same as -s.
+
+    -a, --all                print all information, in the following order,
+                             except omit -p and -i if unknown:
+    -s, --kernel-name        print the kernel name
+    -n, --nodename           print the network node hostname
+    -r, --kernel-release     print the kernel release
+    -v, --kernel-version     print the kernel version
+    -m, --machine            print the machine hardware name
+    -p, --processor          print the processor type (non-portable)
+    -i, --hardware-platform  print the hardware platform (non-portable)
+    -o, --operating-system   print the operating system
+    ```
+
+* `nproc` - number of cores
+
+* `lscpu` - CPU info
+
+* `arch` - CPU architecture
+
+* `free` - memory info
+
+* `lsblk` - disk partitions (sda = hdd, nvme = ssd)
+
+* `lshw`, `hwinfo` - verbose info about firmware, buses, hardware
+
+* `inxi` - general info about system + hardware
+
+* Partitions
+
+    * `mount` (mounts and shows info about mounted partitions):
+
+    ```console
+    $ mount <partition> <mount_point>
+    ```
+
+    * `unmount` (unmounts partition):
+
+    ```console
+    $ unmount <partition>
+    ```
+
+    * `fdisk` (shows disk partitioning):
+
+    ```console
+    $ fdisk -l <disk>
+    ```
+
+    * `mkfs` (format partition):
+
+    ```console
+    $ mkfs.<format> <partition>
+    ```

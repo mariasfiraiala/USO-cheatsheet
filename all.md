@@ -616,3 +616,111 @@
     ```console
     $ mkfs.<format> <partition>
     ```
+
+## Users
+
+* Misc
+
+    * current user:
+
+    ```console
+    $ whoami
+    ```
+
+    * info about current user (uid, gid, groups):
+    
+    ```console
+    $ id
+    ```
+
+    * info about user, parsed from `/etc/passwd`:
+
+    ```console
+    $ finger <username>
+    ```
+
+    * showing transition of the shell when using `sudo`:
+
+    ```console
+    $ pstree -Aups $$
+    ```
+
+    * showing proc hierarchy when using `sudo`:
+
+    ```console
+    $ ps -H
+    ```
+
+* Redirecting with `sudo`
+
+    1. switch to `root` and redirect from there
+
+    1. use `tee` (write string both to file and stdout):
+
+        ```console
+        $ echo “giberish” | sudo tee <file> # -a for appending the string and not overwriting the file
+        ```
+
+* Changing stuff about users
+
+    * default shell:
+
+    ```console
+    $ chsh -s <new_shell> <username>
+    ```
+
+    * name:
+
+    ```console
+    $ chfn <username>
+    ```
+
+    * password:
+
+    ```console
+    $ passwd <username>
+    ```
+
+    * home:
+
+    ```console
+    $ usermod -d <home_dir> <username>
+    ```
+
+* Making it impossible for a user to login
+
+    ```console
+    $ chsh -s /sbin/nologin <username> 
+    $ # or
+    $ passwd -l <username>
+    $ # or
+    $ usermod --expiredate 1 <username> 
+    ```
+
+* Permissions and ownership
+
+    * changing permissions:
+
+    ```console
+    $ chmod <octal> <file>
+    ```
+
+    * changing owner/group:
+
+    ```console
+    $ chown <username>:<group> <file>
+    ```
+
+    * changing group:
+
+    ```console
+    $ chgrp <group> <file>
+    ```
+
+* Adding users
+
+    ```console
+    $ adduser <username>
+    $ adduser --home <home_dir> <username> # home_dir must already exist
+    $ adduser <username1> <username2> # adds username1 to username2's group
+    ```

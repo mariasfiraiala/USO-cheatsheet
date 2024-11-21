@@ -1,3 +1,5 @@
+Copyright Maria Sfiraiala (maria.sfiraiala@stud.acs.upb.ro)
+
 # All: mid and final
 
 ## File System Basics
@@ -760,3 +762,4 @@
     * password generator: `pwgen`
 
     * manual password generator: `cat /dev/urandom | tr -dc 'A-Za-z0-9' | head -c 10`
+
